@@ -1,0 +1,6 @@
+This is the flight tracker!
+
+RUNS THE APPLICATION:
+python tracker.py
+
+You can mess with the setting in the config.ini
