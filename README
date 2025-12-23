@@ -1,6 +1,18 @@
 This is the flight tracker!
 
-RUNS THE APPLICATION:
-python tracker.py
+SETUP:
+Be sure to populate the API information in the credentials.json. 
+OpenSky credentials took a bit of time to work, don't be discouraged if it does not immediatly work.
+Install Python
 
-You can mess with the setting in the config.ini
+(WIN) LOCALLY RUNS THE APPLICATION (CMD in folder):
+.\venv\Scripts\activate
+python tracker.py
+or any of the other .py scripts included
+
+(PI) LOCALLY RUNS THE APPLICATION (Terminal in folder):
+source venv/bin/activate
+python tracker.py
+or any of the other .py scripts included
+
+You can mess with the setting in the config.ini. I believe the LED dimmesions are hard-coded.
