@@ -1,9 +1,12 @@
 This is the flight tracker!
+The main script, tracker.py, also uses led_display.py as I wanted to seperate the tracking logic from the display logic.
+This can all be run locally without all the hardware.
 
 SETUP:
-Be sure to populate the API information in the credentials.json. 
+Be sure to populate the API information in the credentials.json. (OpenSky, Aero, and Weather.com)
 OpenSky credentials took a bit of time to work, don't be discouraged if it does not immediatly work.
-Install Python
+Install Python and relevent libraries (Haversine, luma core)
+  Just squash bugs as they appear and you'll be fine.
 
 (WIN) LOCALLY RUNS THE APPLICATION (CMD in folder):
 .\venv\Scripts\activate
