@@ -272,6 +272,7 @@ def log_critical_alert(subject: str, body: str):
     """
     LOGGER.critical(f"[ALERT] {subject}: {body}")
 
+
 # --- 4. HELPER FUNCTIONS ---
 
 # Regex to match standard commercial flight numbers: 
@@ -294,14 +295,14 @@ def is_commercial_callsign(callsign):
     
     clean_callsign = callsign.strip().upper()
 
-    # 1. Check if the callsign matches the structural pattern (e.g., AAL123)
+    # Step 1: Check if the callsign matches the structural pattern (e.g., AAL123)
     if not COMMERCIAL_CALLSIGN_PATTERN.match(clean_callsign):
         return False
     
-    # 2. Extract the 3-letter ICAO prefix
+    # Step 2: Extract the 3-letter ICAO prefix
     icao_prefix = clean_callsign[:3]
     
-    # 3. Check if the prefix is on the exclusion list
+    # Step 3: Check if the prefix is on the exclusion list
     if icao_prefix in NON_COMMERCIAL_PREFIXES:
         return False
 
@@ -780,12 +781,36 @@ def run_display():
         # Send to LED Matrix Library
         try:
             import led_display
-            led_display.scroll_message(message)
+            led_display.clear()
+            led_display.hide()
+            time.sleep(0.05)
+            led_display.show()
+            time.sleep(0.05)
+            led_display.message(message)
+
         except ImportError:
             pass # Running on desktop without LED hardware
         
         time.sleep(REFRESH_TIME)
 
+# 8. Startup loop to force clear any legacy pixels on the display.
+def run_startup():
+ # Send to LED Matrix Library
+    try:
+        import led_display
+        for i in range(10):
+            led_display.show()
+            time.sleep(0.05)
+            led_display.message("o7 BOOTING BOOTING BOOTING o7")
+            time.sleep(0.05)
+            led_display.clear()
+            led_display.hide()
+
+    except ImportError:
+        pass # Running on desktop without LED hardware
+
+
 # --- 8. EXECUTION ---
 if __name__ == "__main__":
+    run_startup()
     run_display()

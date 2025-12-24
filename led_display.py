@@ -7,7 +7,6 @@ from luma.core.legacy import text
 from luma.core.legacy.font import proportional, CP437_FONT
 
 # --- HARDWARE CONFIGURATION ---
-# LED Matrix Dimmensions (overriding the config.ini)
 MODULE_W = 24
 MODULE_H = 2
 MODULE_SIZE = 8
@@ -18,10 +17,10 @@ CANVAS_HEIGHT = MODULE_H * MODULE_SIZE
 BASE_SCALE_FACTOR_W = 1 
 BASE_SCALE_FACTOR_H = 2 
 
-BASE_WIDTH = CANVAS_WIDTH // BASE_SCALE_FACTOR_W
-BASE_HEIGHT = CANVAS_HEIGHT // BASE_SCALE_FACTOR_H
+BASE_WIDTH = CANVAS_WIDTH // BASE_SCALE_FACTOR_W    # 96 pixels wide
+BASE_HEIGHT = CANVAS_HEIGHT // BASE_SCALE_FACTOR_H  # 8 pixels high
 
-BUFFER_SIZE = 1 #Buffer applied to the borders of the image
+BUFFER_SIZE = 1 
 
 # --- INITIALIZATION ---
 try:
@@ -33,7 +32,7 @@ try:
         block_orientation=-90, 
         rotate=0 
     )
-    device.brightness = 0 # Default
+    device.brightness = 0 # Default brightness
     DEVICE_AVAILABLE = True
 except Exception as e:
     print(f"[LED LIBRARY] Hardware initialization failed: {e}")
@@ -51,7 +50,7 @@ def _process_snake_topology(img):
         
         row_img = img.crop(box)
  
-        # Apply corrections based on verified LEDLargeTextTest.py snaking LED logic
+        # Apply corrections based on verified LEDLargeTextTest.py logic
         if row_index % 2 == 0:
             row_img = row_img.transpose(Image.FLIP_LEFT_RIGHT)
         else:
@@ -62,10 +61,9 @@ def _process_snake_topology(img):
     return processed_img
 
 
-def scroll_message(message_text, scroll_delay=0.03):
+def message(message_text, scroll_delay=0.03):
     """
-    NO LONGER SCROLLS as I was unable to scroll an image correctly.
-    Public function to display a message on the LED matrix.
+    Public function to scroll a message across the LED matrix.
     Handles image generation, scaling, buffering, and topology correction.
     """
     if not DEVICE_AVAILABLE:
@@ -93,3 +91,12 @@ def scroll_message(message_text, scroll_delay=0.03):
     # 6. Display Frame
     device.display(final_image)
     time.sleep(scroll_delay)
+
+def clear():
+    device.clear();
+
+def hide():
+    device.hide();
+
+def show():
+    device.show();
