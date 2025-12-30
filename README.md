@@ -23,10 +23,10 @@ You can mess with the setting in the config.ini. I believe the LED dimmesions ar
 Example of a 24x2 LED matrix powered by a 5V 4A power supply with a Raspberry Pi 3 B+ (seperately powered).
 
 Flight not found.
-![Flight informaation](images/time.jpg)
+<img src="images/time.jpg" alt="Flight information" width="600">
 
 Flight found outside operational window or without scheduling budget.
-![Flight informaation](images/flight.jpg)
+<img src="images/flight.jpg" alt="Flight information" width="600">
 
 Flight found within operational window and with scheduling budget.
-![Flight informaation](images/schedule.jpg)
+<img src="images/schedule.jpg" alt="Flight information" width="600">
