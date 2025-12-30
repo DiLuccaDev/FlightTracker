@@ -20,4 +20,13 @@ or any of the other .py scripts included
 
 You can mess with the setting in the config.ini. I believe the LED dimmesions are hard-coded.
 
-![test](images/flight.jpg)
+Example of a 24x2 LED matrix powered by a 5V 4A power supply with a Raspberry Pi 3 B+ (seperately powered).
+
+Flight not found.
+![Flight informaation](images/time.jpg)
+
+Flight found outside operational window or without scheduling budget.
+![Flight informaation](images/flight.jpg)
+
+Flight found within operational window and with scheduling budget.
+![Flight informaation](images/schedule.jpg)
